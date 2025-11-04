@@ -1,5 +1,5 @@
 {
-  "name": "@hrms/components",
+  "name": "thunder-ui",
   "version": "1.0.0",
   "description": "Reusable React component library for HRMS application",
   "main": "./dist/index.js",
@@ -22,8 +22,8 @@
     "dev": "rollup -c --watch",
     "build": "npm run build:types && npm run build:bundle && npm run build:css",
     "build:bundle": "rollup -c",
-    "build:css": "tailwindcss -i ./src/styles.css -o ./dist/styles.css --minify",
-    "build:types": "tsc --emitDeclarationOnly",
+    "build:css": "echo /* Styles are included in components */ > ./dist/styles.css",
+    "build:types": "tsc --project tsconfig.build.json",
     "lint": "biome check src",
     "format": "biome format --write src",
     "storybook": "storybook dev -p 6006",

@@ -18,11 +18,13 @@ export default {
       file: "./dist/index.js",
       format: "cjs",
       sourcemap: true,
+      inlineDynamicImports: true,
     },
     {
       file: "./dist/index.esm.js",
       format: "esm",
       sourcemap: true,
+      inlineDynamicImports: true,
     },
   ],
   plugins: [
@@ -38,26 +40,14 @@ export default {
     // Handle SVG imports with ?react suffix
     {
       name: "svg-react-query",
-      resolveId(source) {
+      resolveId(source, importer) {
         if (source.endsWith(".svg?react")) {
-          return source;
+          // Remove ?react and resolve the actual .svg file
+          const actualPath = source.replace("?react", "");
+          return this.resolve(actualPath, importer, { skipSelf: true });
         }
         return null;
-      },
-      load(id) {
-        if (id.endsWith(".svg?react")) {
-          // Remove ?react and let svgr handle it
-          return null;
-        }
-        return null;
-      },
-      transform(code, id) {
-        if (id.endsWith(".svg?react")) {
-          // This will be handled by svgr plugin
-          return null;
-        }
-        return null;
-      },
+      }
     },
     svgr({
       include: "**/*.svg",
@@ -72,8 +62,12 @@ export default {
       },
     }),
     typescript({
-      tsconfig: "./tsconfig.json",
+      tsconfig: "./tsconfig.app.json",
       declaration: false, // Already handled by build:types
+      compilerOptions: {
+        noEmit: false,
+        outDir: "./dist"
+      }
     }),
     postcss({
       extract: false,

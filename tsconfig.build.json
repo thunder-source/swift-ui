@@ -1,0 +1,26 @@
+{
+	"extends": "./tsconfig.app.json",
+	"compilerOptions": {
+		"declaration": true,
+		"declarationDir": "./dist",
+		"emitDeclarationOnly": true,
+		"outDir": "./dist",
+		"noEmit": false,
+		"allowImportingTsExtensions": false,
+		"moduleResolution": "node",
+		"skipLibCheck": true,
+		"allowSyntheticDefaultImports": true,
+		"esModuleInterop": true,
+		"strict": false,
+		"noUnusedLocals": false,
+		"noUnusedParameters": false
+	},
+	"include": ["src"],
+	"exclude": [
+		"src/**/*.stories.tsx",
+		"src/**/*.test.tsx",
+		"src/**/*.test.ts",
+		"node_modules"
+	]
+}
+

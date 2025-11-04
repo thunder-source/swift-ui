@@ -221,27 +221,27 @@ function TimeSelector({ selected, onSelect, onCancel }: TimeSelectorProps) {
 							"linear-gradient(to top, rgba(255,255,255,1), rgba(255,255,255,0.5))",
 					}}
 				/>
-				{createScrollPicker(
-					hourRef,
-					hours,
-					selectedHour,
-					setSelectedHour,
-					hourProgrammaticScroll,
-				)}
-				{createScrollPicker(
-					minuteRef,
-					minutes,
-					selectedMinute,
-					setSelectedMinute,
-					minuteProgrammaticScroll,
-				)}
-				{createScrollPicker(
-					periodRef,
-					periods,
-					selectedPeriod,
-					setSelectedPeriod,
-					periodProgrammaticScroll,
-				)}
+			{createScrollPicker(
+				hourRef,
+				hours,
+				selectedHour,
+				(val) => setSelectedHour(val as number),
+				hourProgrammaticScroll,
+			)}
+			{createScrollPicker(
+				minuteRef,
+				minutes,
+				selectedMinute,
+				(val) => setSelectedMinute(val as number),
+				minuteProgrammaticScroll,
+			)}
+			{createScrollPicker(
+				periodRef,
+				periods,
+				selectedPeriod,
+				(val) => setSelectedPeriod(val as Period),
+				periodProgrammaticScroll,
+			)}
 			</div>
 
 			<div className="pt-4 gap-4 flex justify-between border-t border-gray-200">
