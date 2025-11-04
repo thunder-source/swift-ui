@@ -1,0 +1,338 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+body {
+	font-family: "Poppins", sans-serif;
+}
+
+:root {
+	--border-grey: 0, 0%, 88%; /* #E0E0E0 */
+	/* Primary Colors */
+	--primary-blue: 229, 52%, 35%; /* #2B3886 */
+	--primary-orange: 35, 96%, 54%; /* #F99D16 */
+
+	/* Text Colors */
+	--text-dark: 0, 0%, 10%; /* #1A1A1A */
+	--text-medium: 0, 0%, 33%; /* #555555 */
+	--text-light: 0, 0%, 67%; /* #AAAAAA */
+
+	/* Backgrounds & Surfaces */
+	--bg-white: 0, 0%, 100%; /* #FFFFFF */
+	--bg-light: 216, 28%, 97%; /* #F5F7FA */
+	--bg-grey: 0, 0%, 88%; /* #E0E0E0 */
+	--bg-pale: 218, 20%, 92%; /* #EAECF0 */
+
+	/* Badge HSL base colors */
+	--status-default: 0, 0%, 33%; /* #555555, Dark Gray */
+	--status-success: 134, 63%, 41%; /* #28A745, Green */
+	--status-warning: 45, 100%, 56%; /* #FFC107, Yellow */
+	--status-info: 188, 76%, 40%; /* #17A2B8, Cyan */
+	--status-error: 354, 70%, 53%; /* #DC3545, Red */
+
+	--background: oklch(1 0 0);
+	--foreground: oklch(0.145 0 0);
+	--card: oklch(1 0 0);
+	--card-foreground: oklch(0.145 0 0);
+	--popover: oklch(1 0 0);
+	--popover-foreground: oklch(0.145 0 0);
+	--primary: oklch(0.205 0 0);
+	--primary-foreground: oklch(0.985 0 0);
+	--secondary: oklch(0.97 0 0);
+	--secondary-foreground: oklch(0.205 0 0);
+	--muted: oklch(0.97 0 0);
+	--muted-foreground: oklch(0.556 0 0);
+	--accent: oklch(0.97 0 0);
+	--accent-foreground: oklch(0.205 0 0);
+	--destructive: oklch(0.577 0.245 27.325);
+	--destructive-foreground: oklch(0.577 0.245 27.325);
+	--border: oklch(0.922 0 0);
+	--input: oklch(0.922 0 0);
+
+	--ring: oklch(0.708 0 0);
+	--chart-1: oklch(0.646 0.222 41.116);
+	--chart-2: oklch(0.6 0.118 184.704);
+	--chart-3: oklch(0.398 0.07 227.392);
+	--chart-4: oklch(0.828 0.189 84.429);
+	--chart-5: oklch(0.769 0.188 70.08);
+	--radius: 0.625rem;
+	--sidebar: oklch(0.985 0 0);
+	--sidebar-foreground: oklch(0.145 0 0);
+	--sidebar-primary: oklch(0.205 0 0);
+	--sidebar-primary-foreground: oklch(0.985 0 0);
+	--sidebar-accent: oklch(0.97 0 0);
+	--sidebar-accent-foreground: oklch(0.205 0 0);
+	--sidebar-border: oklch(0.922 0 0);
+	--sidebar-ring: oklch(0.708 0 0);
+	--sidebar-background: 0 0% 98%;
+
+	/* font sizes */
+	--text-4xl: 64px;
+	--text-3xl: 32px;
+	--text-2xl: 24px;
+	--text-xl: 20px;
+	--text-lg: 18px;
+	--text-base: 16px;
+	--text-sm: 14px;
+	--text-xs: 12px;
+	--text-xxs: 10px;
+
+	/* font weights */
+	--font-weight-100: 100;
+	--font-weight-200: 200;
+	--font-weight-300: 300;
+	--font-weight-400: 400;
+	--font-weight-500: 500;
+	--font-weight-600: 600;
+	--font-weight-700: 700;
+	--font-weight-800: 800;
+	--font-weight-900: 900;
+}
+
+.dark {
+	--border-grey: hsl(0, 0%, 24%); /* #3D3D3D */
+	/* Primary Colors */
+	--primary-blue: hsla(229, 52%, 60%, 1); /* Lighter for dark bg */
+	--primary-orange: hsla(35, 96%, 60%, 1);
+
+	/* Text Colors */
+	--text-dark: 0, 0%, 100%; /* white */
+	--text-medium: 0, 0%, 85%;
+	--text-light: 0, 0%, 60%;
+
+	/* Backgrounds & Surfaces */
+	--bg-white: 220, 13%, 14%; /* deep dark */
+	--bg-light: 220, 13%, 18%;
+	--bg-grey: 220, 10%, 28%;
+
+	/* Status Colors */
+	--status-default: 0, 0%, 33%;
+	--status-success: 134, 63%, 48%;
+	--status-warning: 45, 100%, 62%;
+	--status-error: 354, 70%, 60%;
+	--status-info: 188, 76%, 50%;
+
+	--background: oklch(0.145 0 0);
+	--foreground: oklch(0.985 0 0);
+	--card: oklch(0.145 0 0);
+	--card-foreground: oklch(0.985 0 0);
+	--popover: oklch(0.145 0 0);
+	--popover-foreground: oklch(0.985 0 0);
+	--primary: oklch(0.985 0 0);
+	--primary-foreground: oklch(0.205 0 0);
+	--secondary: oklch(0.269 0 0);
+	--secondary-foreground: oklch(0.985 0 0);
+	--muted: oklch(0.269 0 0);
+	--muted-foreground: oklch(0.708 0 0);
+	--accent: oklch(0.269 0 0);
+	--accent-foreground: oklch(0.985 0 0);
+	--destructive: oklch(0.396 0.141 25.723);
+	--destructive-foreground: oklch(0.637 0.237 25.331);
+	--border: oklch(0.269 0 0);
+	--input: oklch(0.269 0 0);
+	--ring: oklch(0.439 0 0);
+	--chart-1: oklch(0.488 0.243 264.376);
+	--chart-2: oklch(0.696 0.17 162.48);
+	--chart-3: oklch(0.769 0.188 70.08);
+	--chart-4: oklch(0.627 0.265 303.9);
+	--chart-5: oklch(0.645 0.246 16.439);
+	--sidebar: oklch(0.205 0 0);
+	--sidebar-foreground: oklch(0.985 0 0);
+	--sidebar-primary: oklch(0.488 0.243 264.376);
+	--sidebar-primary-foreground: oklch(0.985 0 0);
+	--sidebar-accent: oklch(0.269 0 0);
+	--sidebar-accent-foreground: oklch(0.985 0 0);
+	--sidebar-border: oklch(0.269 0 0);
+	--sidebar-ring: oklch(0.439 0 0);
+	--sidebar-background: 240 5.9% 10%;
+}
+
+@theme inline {
+	--color-background: var(--background);
+	--color-foreground: var(--foreground);
+	--color-card: var(--card);
+	--color-card-foreground: var(--card-foreground);
+	--color-popover: var(--popover);
+	--color-popover-foreground: var(--popover-foreground);
+	--color-primary: var(--primary);
+	--color-primary-foreground: var(--primary-foreground);
+	--color-secondary: var(--secondary);
+	--color-secondary-foreground: var(--secondary-foreground);
+	--color-muted: var(--muted);
+	--color-muted-foreground: var(--muted-foreground);
+	--color-accent: var(--accent);
+	--color-accent-foreground: var(--accent-foreground);
+	--color-destructive: var(--destructive);
+	--color-destructive-foreground: var(--destructive-foreground);
+	--color-border: var(--border);
+	--color-input: var(--input);
+	--color-ring: var(--ring);
+	--color-chart-1: var(--chart-1);
+	--color-chart-2: var(--chart-2);
+	--color-chart-3: var(--chart-3);
+	--color-chart-4: var(--chart-4);
+	--color-chart-5: var(--chart-5);
+	--radius-sm: calc(var(--radius) - 4px);
+	--radius-md: calc(var(--radius) - 2px);
+	--radius-lg: var(--radius);
+	--radius-xl: calc(var(--radius) + 4px);
+	--color-sidebar: var(--sidebar);
+	--color-sidebar-foreground: var(--sidebar-foreground);
+	--color-sidebar-primary: var(--sidebar-primary);
+	--color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+	--color-sidebar-accent: var(--sidebar-accent);
+	--color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+	--color-sidebar-border: var(--sidebar-border);
+	--color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+	* {
+		@apply border-border outline-ring/50;
+	}
+	body {
+		@apply bg-background text-foreground;
+	}
+}
+
+@layer components {
+	.card {
+		border: 1px solid #e0e0e0;
+		border-radius: 1rem;
+		box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+	}
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+input[type="number"] {
+	-moz-appearance: textfield;
+}
+
+/* Scrollbar width */
+.iframe-container::-webkit-scrollbar {
+	width: 8px;
+}
+
+.iframe-container::-webkit-scrollbar-track {
+	background: #f1f1f1;
+}
+
+.iframe-container::-webkit-scrollbar-thumb {
+	background: #be1515;
+	border-radius: 10px;
+}
+
+.iframe-container::-webkit-scrollbar-thumb:hover {
+	background: #df0808;
+}
+
+/* Firefox */
+.iframe-container {
+	scrollbar-width: thin;
+	scrollbar-color: #be1515 #f1f1f1;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+	display: none;
+	-webkit-appearance: none;
+}
+
+/* Hide Scrollbar style */
+/* Hide scrollbar for Chrome, Safari and Opera */
+.scrollbar-hide::-webkit-scrollbar {
+	display: none;
+}
+/* Hide scrollbar for IE, Edge and Firefox */
+.scrollbar-hide {
+	-ms-overflow-style: none; /* IE and Edge */
+	scrollbar-width: none; /* Firefox */
+}
+
+/* Hide scrollbar but still allow scrolling */
+.scrollbar-hide {
+	scrollbar-width: none; /* Firefox */
+	-ms-overflow-style: none; /* Internet Explorer 10+ */
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+	display: none; /* Safari and Chrome */
+}
+
+/* Custom Scrollbar style */
+::-webkit-scrollbar {
+	width: 0; /* hidden by default */
+	transition: width 0.2s;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+	background: hsl(0, 0%, 88%);
+	border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+	background: hsla(229, 52%, 35%, 0.8);
+	border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+	background: hsla(229, 52%, 35%, 0.6);
+}
+
+/* Show scrollbar on hover for all elements */
+*:hover::-webkit-scrollbar {
+	width: 8px; /* visible on hover */
+}
+
+/* Firefox scrollbar behavior */
+* {
+	scrollbar-width: none;
+}
+
+*:hover {
+	scrollbar-width: thin;
+}
+.reveal-scrollbar {
+	overflow: auto;
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+}
+
+.reveal-scrollbar:hover {
+	/* Re‑enable in Firefox */
+	scrollbar-width: thin;
+}
+
+/* WebKit: hide by default, show on hover */
+.reveal-scrollbar::-webkit-scrollbar {
+	width: 0; /* hidden */
+	transition: width 0.2s;
+}
+.reveal-scrollbar:hover::-webkit-scrollbar {
+	width: 8px; /* visible */
+}
+
+/* AnnouncementCard style */
+.gradient-border {
+	position: absolute;
+	left: 0;
+	top: 0;
+	bottom: 0;
+	width: 4px;
+	background: linear-gradient(
+		200deg,
+		#f99d16 -15.69%,
+		rgba(249, 157, 22, 0) 100%
+	);
+	content: "";
+	z-index: 0;
+}
