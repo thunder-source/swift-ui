@@ -1,0 +1,11 @@
+{
+  "buildCommand": "npm run build-storybook",
+  "outputDirectory": "storybook-static",
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}
+
