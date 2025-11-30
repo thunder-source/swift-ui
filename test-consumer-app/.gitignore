@@ -1,0 +1,21 @@
+# Ignore dependencies
+node_modules
+package-lock.json
+pnpm-lock.yaml
+yarn.lock
+
+# Ignore build output
+dist
+dist-ssr
+*.local
+
+# Ignore editor
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?

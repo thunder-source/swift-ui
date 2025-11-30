@@ -1,0 +1,29 @@
+{
+  "name": "thunder-ui-test-app",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "description": "Test consumer app for @thunder-source/thunder-ui",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "react-router-dom": "^7.9.6",
+    "react-redux": "^9.2.0"
+  },
+  "devDependencies": {
+    "@thunder-source/thunder-ui": "file:../",
+    "@vitejs/plugin-react-swc": "^3.8.0",
+    "@types/react": "^19.0.10",
+    "@types/react-dom": "^19.0.4",
+    "autoprefixer": "^10.4.21",
+    "postcss": "^8.4.49",
+    "tailwindcss": "^4.1.4",
+    "typescript": "~5.7.2",
+    "vite": "^6.3.1"
+  }
+}

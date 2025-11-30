@@ -7,9 +7,19 @@ import svgr from "@svgr/rollup";
 import alias from "@rollup/plugin-alias";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { visualizer } from "rollup-plugin-visualizer";
+import terser from "@rollup/plugin-terser";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+
+// Determine if we're in production mode
+const isProduction = process.env.NODE_ENV === 'production';
+
+// Source map configuration: full maps in dev, hidden maps in production
+// hidden-source-map generates .map files but doesn't reference them in the bundle
+// This keeps bundles smaller while still providing debugging capability if needed
+const sourcemapConfig = isProduction ? 'hidden' : true;
 
 export default {
   input: "src/index.ts",
@@ -17,14 +27,14 @@ export default {
     {
       file: "./dist/index.js",
       format: "cjs",
-      sourcemap: true,
-      inlineDynamicImports: true,
+      sourcemap: sourcemapConfig,
+      inlineDynamicImports: true, // Keep true for CJS if we want a single file, or false for splitting. Usually CJS libraries are single file or split. Let's keep it true for now but minify.
     },
     {
       file: "./dist/index.esm.js",
       format: "esm",
-      sourcemap: true,
-      inlineDynamicImports: true,
+      sourcemap: sourcemapConfig,
+      inlineDynamicImports: true, // ESM usually benefits from splitting but for a library single file is often expected unless using entry points.
     },
   ],
   plugins: [
@@ -83,6 +93,13 @@ export default {
       },
       extensions: [".css"],
       inject: false,
+    }),
+    terser(), // Minify the output
+    visualizer({
+      filename: "bundle-analysis.html",
+      open: false,
+      gzipSize: true,
+      brotliSize: true,
     }),
   ],
   external: ["react", "react-dom", "react-router-dom", "react-redux"],

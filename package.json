@@ -27,7 +27,7 @@
     "dev:bundle": "rollup -c --watch",
     "dev:types": "tsc --project tsconfig.build.json --watch",
     "build": "pnpm run clean && pnpm run build:types && pnpm run build:bundle",
-    "build:bundle": "rollup -c",
+    "build:bundle": "cross-env NODE_ENV=production rollup -c",
     "build:types": "tsc --project tsconfig.build.json",
     "clean": "node -e \"const fs=require('fs'); const path=require('path'); const rimraf=(p)=>{try{fs.rmSync(p,{recursive:true,force:true})}catch(e){}}; rimraf(path.join(__dirname,'dist'));\"",
     "lint": "biome check src",
@@ -35,7 +35,10 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "cross-env NODE_OPTIONS=--max-old-space-size=4096 storybook build",
     "chromatic": "chromatic",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "npm run build",
+    "validate": "node scripts/validate-package.js",
+    "test:consumer": "cd test-consumer-app && npm install && npm run dev",
+    "pack:test": "npm pack && echo '\n✅ Test package created. Install in test app with: npm install ../*.tgz'"
   },
   "keywords": [
     "react",
@@ -52,6 +55,10 @@
     "type": "git",
     "url": "https://github.com/thunder-source/thunder-ui.git"
   },
+  "bugs": {
+    "url": "https://github.com/thunder-source/thunder-ui/issues"
+  },
+  "homepage": "https://github.com/thunder-source/thunder-ui#readme",
   "sideEffects": [
     "**/*.css",
     "**/index.css",
@@ -103,6 +110,7 @@
     "@rollup/plugin-commonjs": "^28.0.1",
     "@rollup/plugin-node-resolve": "^15.3.0",
     "@rollup/plugin-replace": "^6.0.3",
+    "@rollup/plugin-terser": "^0.4.4",
     "@rollup/plugin-typescript": "^12.1.1",
     "@storybook/addon-docs": "^10.0.3",
     "@storybook/addon-onboarding": "^10.0.3",
@@ -145,6 +153,7 @@
     "rollup-plugin-dts": "^6.1.1",
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "rollup-plugin-postcss": "^4.0.2",
+    "rollup-plugin-visualizer": "^6.0.5",
     "simple-git-hooks": "^2.12.1",
     "storybook": "^10.0.3",
     "tailwindcss": "^4.1.4",

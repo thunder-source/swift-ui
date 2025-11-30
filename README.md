@@ -62,6 +62,8 @@ module.exports = {
 };
 ```
 
+> **Note**: This library uses JavaScript format for Tailwind configuration (`tailwind.config.js`) for maximum flexibility and compatibility.
+
 ### Router Setup (for Header, RootLayout, Sidebar)
 
 If you're using components that require routing (`Header`, `RootLayout`, `Sidebar`), make sure to wrap your app with a router:
@@ -113,6 +115,21 @@ For detailed component documentation and examples, please refer to the [Storyboo
 
 This package is written in TypeScript and includes type definitions. No additional types package is required.
 
+### Type Safety Features
+- Full TypeScript strict mode enabled
+- Declaration maps included for "Go to Definition" support
+- Comprehensive type definitions for all components
+
+## Bundle Size
+
+The library is optimized for production use:
+
+- **ESM Bundle**: ~2.07 MB (minified)
+- **CJS Bundle**: ~2.08 MB (minified)
+- **CSS Bundle**: ~113 KB (processed with Tailwind)
+
+> **Note**: The actual bundle size in your application will be smaller due to tree-shaking. Only the components you import will be included in your final bundle.
+
 ## License
 
 MIT
@@ -121,9 +138,61 @@ MIT
 
 Contributions are welcome! Please feel free to submit a Pull Request.
 
+## Development
+
+### Local Development
+```bash
+# Install dependencies
+pnpm install
+
+# Start development mode
+pnpm run dev
+
+# Build the library
+pnpm run build
+
+# Run linting
+pnpm run lint
+
+# Start Storybook
+pnpm run storybook
+```
+
+### Testing
+```bash
+# Validate package build
+pnpm run validate
+
+# Test in consumer app
+pnpm run test:consumer
+
+# Create test package
+pnpm run pack:test
+```
+
+For detailed testing instructions, see [TESTING.md](./TESTING.md).
+
+### Pre-Release
+
+Before publishing, review the [Pre-Release Checklist](./PRE_RELEASE_CHECKLIST.md) to ensure:
+- Build completes successfully
+- All tests pass
+- TypeScript types work correctly
+- Components render in test app
+- Package metadata is complete
+
+## Documentation
+
+- **[Testing Guide](./TESTING.md)** - How to test the package locally
+- **[Pre-Release Checklist](./PRE_RELEASE_CHECKLIST.md)** - Complete checklist before publishing
+- **[Release Notes](./RELEASE_NOTES.md)** - Version history and changes
+- **[Test Consumer App](./test-consumer-app/README.md)** - Test application setup
+
 ## Support
 
-For issues and questions, please open an issue on the GitHub repository.
+For issues and questions, please open an issue on the [GitHub repository](https://github.com/thunder-source/thunder-ui/issues).
 
-> **Note**: Update the repository URL in `package.json` with your actual GitHub repository URL.
+---
+
+> **Built with** ❤️ by Praditya Manjhi
 
