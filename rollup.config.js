@@ -70,10 +70,20 @@ export default {
       }
     }),
     postcss({
-      extract: false,
-      modules: true,
-      use: ["sass"],
+      extract: "styles.css",
+      minimize: true,
+      modules: false,
+      use: {
+        sass: null,
+        stylus: null,
+        less: null,
+      },
+      config: {
+        path: "./postcss.config.cjs",
+      },
+      extensions: [".css"],
+      inject: false,
     }),
   ],
-  external: ["react", "react-dom"],
+  external: ["react", "react-dom", "react-router-dom", "react-redux"],
 };

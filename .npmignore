@@ -39,3 +39,14 @@ coverage/
 # Git
 .git/
 .gitignore
+
+# Unwanted files in dist
+dist/**/*.pdf
+dist/**/*.html
+dist/vite.svg
+dist/vite-inject-mocker-entry.js
+dist/icons/
+dist/images/
+dist/assets/
+dist/iframe.html
+dist/evisapdf.pdf

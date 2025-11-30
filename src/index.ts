@@ -1,3 +1,5 @@
+import "./index.css";
+
 // Export all components
 export * from "./components";
 
