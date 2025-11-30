@@ -118,6 +118,13 @@
 
 ## Phase 3: Medium Priority Issues (Should Fix Soon) ⚡
 
+### Issue #13: Form Builder Validation
+- [/] Verify existing validation rules in `FormComponent` (Unit tests created, debugging SVG issues)
+- [ ] Add missing validation types if any (e.g. URL, date range)
+- [x] Ensure validation error messages are accessible
+- [x] Test custom validation logic (Covered in unit tests)
+- [x] Verify "validate on change" and "validate on blur" behaviors (Implemented and tested)
+
 ### Issue #7: Incomplete Package Metadata
 - [ ] Verify author information
   - [ ] Confirm "Praditya Manjhi" is correct

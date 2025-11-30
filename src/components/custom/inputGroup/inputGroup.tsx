@@ -58,6 +58,11 @@ export interface InputGroupProps {
 	onChange?: (values: Record<string, string | File[]>) => void;
 
 	/**
+	 * Called when any input blurs.
+	 */
+	onBlur?: (name: string, value: string) => void;
+
+	/**
 	 * Current form values.
 	 */
 	values: Record<string, string | File[]>;
@@ -86,12 +91,17 @@ export interface InputGroupProps {
 const InputGroup: React.FC<InputGroupProps> = ({
 	fields,
 	onChange,
+	onBlur,
 	values,
 	className = "",
 	errors,
 }) => {
 	const handleChange = (name: string, value: string | File[]) => {
 		onChange?.({ ...values, [name]: value });
+	};
+
+	const handleBlur = (name: string, value: string) => {
+		onBlur?.(name, value);
 	};
 	return (
 		<div className={`w-full mx-auto flex flex-wrap ${className}`}>
@@ -115,6 +125,7 @@ const InputGroup: React.FC<InputGroupProps> = ({
 							key={field.name}
 							value={values[field.name] as string}
 							onChange={(e) => handleChange(field.name, e.target.value)}
+							onBlur={(e) => handleBlur(field.name, e.target.value)}
 							className={field.className}
 							errorMessage={errors?.[field.name]}
 						/>

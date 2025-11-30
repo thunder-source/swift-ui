@@ -291,6 +291,11 @@ const InputField = ({
 		}
 	}, [value]);
 
+	// Sync error state with errorMessage prop
+	useEffect(() => {
+		setError(errorMessage || "");
+	}, [errorMessage]);
+
 	// Memoized validation function
 	const performValidation = useCallback(
 		(val: string): ValidationResult =>
@@ -809,7 +814,7 @@ const InputField = ({
 			)}
 
 			{/* Error message */}
-			{error && touched && (
+			{error && (touched || !!errorMessage) && (
 				<div className="flex items-center gap-1 mt-1" role="alert">
 					<SvgIcon
 						name="alert"

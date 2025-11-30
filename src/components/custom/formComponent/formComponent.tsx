@@ -566,7 +566,7 @@ const FormComponent = React.memo<FormComponentProps>(
 		const { formId, titleId, errorSummaryId } = useAccessibility(title);
 
 		// Use form validation hook
-		const { validate } = useFormValidation(fields, customValidate);
+		const { validate, validateField } = useFormValidation(fields, customValidate);
 
 		// Use form state hook
 		const { values, errors, updateValues, updateErrors, clearErrors, reset } =
@@ -600,17 +600,72 @@ const FormComponent = React.memo<FormComponentProps>(
 				const changedField = Object.keys(newValues)[0];
 				updateValues(newValues, changedField);
 
-				// Clear errors for changed fields
-				if (Object.keys(errors).length > 0) {
-					clearErrors(Object.keys(newValues));
-				}
-
 				// Clear submit error when form changes
 				if (submitError) {
 					clearSubmitError();
 				}
+
+				if (validateOnChange && changedField) {
+					const field = fields.find((f) => f.name === changedField);
+					if (field) {
+						const error = validateField(
+							field,
+							newValues[changedField] as string,
+							newValues,
+						);
+						
+						// We need to be careful with error updates to avoid race conditions
+						// or overwriting other errors
+						if (error) {
+							updateErrors({ ...errors, [changedField]: error });
+						} else if (errors[changedField]) {
+							const newErrors = { ...errors };
+							delete newErrors[changedField];
+							updateErrors(newErrors);
+						}
+						return;
+					}
+				}
+
+				// Default behavior: Clear errors for changed fields if not validating
+				if (Object.keys(errors).length > 0) {
+					clearErrors(Object.keys(newValues));
+				}
 			},
-			[updateValues, errors, clearErrors, submitError, clearSubmitError],
+			[
+				updateValues,
+				errors,
+				clearErrors,
+				submitError,
+				clearSubmitError,
+				validateOnChange,
+				fields,
+				validateField,
+				updateErrors,
+			],
+		);
+
+		// Handle blur for validation
+		const handleBlur = useCallback(
+			(name: string, value: string) => {
+				if (validateOnBlur) {
+					const field = fields.find((f) => f.name === name);
+					if (field) {
+						const error = validateField(field, value, values);
+						if (error) {
+							updateErrors({ ...errors, [name]: error });
+						} else {
+							// Clear error if valid
+							if (errors[name]) {
+								const newErrors = { ...errors };
+								delete newErrors[name];
+								updateErrors(newErrors);
+							}
+						}
+					}
+				}
+			},
+			[validateOnBlur, fields, validateField, values, errors, updateErrors],
 		);
 
 		// Reset form handler
@@ -697,6 +752,7 @@ const FormComponent = React.memo<FormComponentProps>(
 						fields={fields}
 						values={values}
 						onChange={handleChange}
+						onBlur={handleBlur}
 						errors={errors}
 					/>
 				)}
