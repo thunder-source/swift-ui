@@ -1,6 +1,6 @@
 import { useState } from 'react'
 // Import Thunder-UI components and styles
-import '@thunder-source/thunder-ui/styles'
+import '@thunder-source/thunder-ui/styles'  
 import { Button, InputField, Card } from '@thunder-source/thunder-ui'
 
 function App() {
@@ -21,11 +21,11 @@ function App() {
         </div>
 
         {/* Button Tests */}
-        <Card className="p-6">
+        <Card className="p-6" >
           <h2 className="text-2xl font-semibold mb-4">Button Component</h2>
           <div className="space-y-4">
             <div className="flex gap-3 items-center">
-              <Button variant="default" onClick={() => setCount(count + 1)}>
+              <Button  variant="danger" onClick={() => setCount(count + 1)}>
                 Click me ({count})
               </Button>
               <Button variant="secondary" onClick={() => setCount(0)}>
