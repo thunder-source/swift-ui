@@ -1,5 +1,8 @@
 {
   "buildCommand": "npm run build-storybook",
-  "outputDirectory": "storybook-static"
+  "outputDirectory": "storybook-static",
+  "cleanUrls": false,
+  "trailingSlash": false,
+  "framework": null
 }
 
