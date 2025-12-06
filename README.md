@@ -138,6 +138,8 @@ MIT
 
 Contributions are welcome! Please feel free to submit a Pull Request.
 
+Have an idea? Check out our [Feature Suggestions & Roadmap](./FEATURE_SUGGESTION.md) to see what's planned or to make a request.
+
 ## Development
 
 ### Local Development

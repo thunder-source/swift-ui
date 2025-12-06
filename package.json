@@ -104,6 +104,7 @@
   },
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",
+    "@changesets/cli": "^2.29.8",
     "@chromatic-com/storybook": "^4.1.2",
     "@eslint/js": "^9.22.0",
     "@rollup/plugin-alias": "^5.1.0",
