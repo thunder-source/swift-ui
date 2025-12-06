@@ -1,7 +1,7 @@
 {
   "name": "thunder-ui-test-app",
   "version": "0.0.1",
-  "private": true,
+  "private": false,
   "type": "module",
   "description": "Test consumer app for @thunder-source/thunder-ui",
   "scripts": {
