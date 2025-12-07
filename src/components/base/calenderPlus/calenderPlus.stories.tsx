@@ -167,6 +167,5 @@ export const Responsive: Story = {
 		viewport: {
 			defaultViewport: "mobile",
 		},
-		chromatic: { viewports: [375, 768, 1024] },
 	},
 };

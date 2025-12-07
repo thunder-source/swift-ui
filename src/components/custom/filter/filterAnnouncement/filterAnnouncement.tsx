@@ -4,7 +4,7 @@ import {
 	CREATOR_OPTIONS,
 	TARGET_AUDIENCE_OPTIONS,
 } from "@/constants";
-import type { FilterAnnouncementProps } from "@/types";
+import type { FilterAnnouncementProps, FilterHandles } from "@/types";
 import {
 	forwardRef,
 	useCallback,
@@ -14,7 +14,10 @@ import {
 	useState,
 } from "react";
 
-export const FilterAnnouncement = forwardRef(
+export const FilterAnnouncement = forwardRef<
+	FilterHandles,
+	FilterAnnouncementProps
+>(
 	(
 		{ data, onChange, onApply, type = "onSubmit" }: FilterAnnouncementProps,
 		ref,

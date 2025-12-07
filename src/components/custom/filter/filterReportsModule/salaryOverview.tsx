@@ -5,6 +5,7 @@ import { DEPARTMENT_OPTIONS, LOCATION_OPTIONS } from "@/constants/filter";
 import type {
 	FilterSalaryOverviewProps,
 	FilterSalaryOverviewValues,
+	FilterHandles,
 } from "@/types/filter";
 import { typedOnChange } from "@/utils/typeUtils";
 import {
@@ -16,7 +17,10 @@ import {
 	useState,
 } from "react";
 
-export const FilterSalaryOverview = forwardRef(
+export const FilterSalaryOverview = forwardRef<
+	FilterHandles,
+	FilterSalaryOverviewProps
+>(
 	(
 		{ data, onChange, onApply, type = "onSubmit" }: FilterSalaryOverviewProps,
 		ref,

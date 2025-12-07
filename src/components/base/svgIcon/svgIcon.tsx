@@ -165,6 +165,10 @@ const SvgIcon: React.FC<IconProps> = ({
 	const sizeInfo = svgSizes[name];
 	const isLargeSvg = sizeInfo?.isLarge || false;
 
+	// Extract ref from props to avoid TypeScript incompatibility with legacy string refs
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
+	const { ref, ...restProps } = props;
+
 	// If the SVG is large and is a lazy-loaded component, wrap it in Suspense
 	if (isLargeSvg) {
 		// Log a warning about the large SVG
@@ -180,7 +184,7 @@ const SvgIcon: React.FC<IconProps> = ({
 					height={size}
 					fill={color}
 					className={className}
-					{...props}
+					{...restProps}
 				/>
 			</Suspense>
 		);
@@ -193,7 +197,7 @@ const SvgIcon: React.FC<IconProps> = ({
 			height={size}
 			fill={color}
 			className={className}
-			{...props}
+			{...restProps}
 		/>
 	);
 };

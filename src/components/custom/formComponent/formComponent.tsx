@@ -566,7 +566,10 @@ const FormComponent = React.memo<FormComponentProps>(
 		const { formId, titleId, errorSummaryId } = useAccessibility(title);
 
 		// Use form validation hook
-		const { validate, validateField } = useFormValidation(fields, customValidate);
+		const { validate, validateField } = useFormValidation(
+			fields,
+			customValidate,
+		);
 
 		// Use form state hook
 		const { values, errors, updateValues, updateErrors, clearErrors, reset } =
@@ -613,7 +616,7 @@ const FormComponent = React.memo<FormComponentProps>(
 							newValues[changedField] as string,
 							newValues,
 						);
-						
+
 						// We need to be careful with error updates to avoid race conditions
 						// or overwriting other errors
 						if (error) {

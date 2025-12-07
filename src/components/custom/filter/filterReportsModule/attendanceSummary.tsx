@@ -4,7 +4,7 @@ import {
 	DEPARTMENT_TEAM_OPTIONS,
 	LOCATION_OPTIONS,
 } from "@/constants";
-import type { FilterAttendanceSummaryProps } from "@/types";
+import type { FilterAttendanceSummaryProps, FilterHandles } from "@/types";
 import {
 	forwardRef,
 	useCallback,
@@ -14,7 +14,10 @@ import {
 	useState,
 } from "react";
 
-export const FilterAttendanceSummary = forwardRef(
+export const FilterAttendanceSummary = forwardRef<
+	FilterHandles,
+	FilterAttendanceSummaryProps
+>(
 	(
 		{
 			data,

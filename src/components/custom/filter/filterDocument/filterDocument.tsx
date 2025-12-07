@@ -5,7 +5,7 @@ import {
 	DOCUMENT_TYPE_OPTIONS,
 	REVIEWER_OPTIONS,
 } from "@/constants";
-import type { FilterDocumentProps } from "@/types";
+import type { FilterDocumentProps, FilterHandles } from "@/types";
 import {
 	forwardRef,
 	useCallback,
@@ -15,7 +15,7 @@ import {
 	useState,
 } from "react";
 
-export const FilterDocument = forwardRef(
+export const FilterDocument = forwardRef<FilterHandles, FilterDocumentProps>(
 	(
 		{ data, onChange, onApply, type = "onSubmit" }: FilterDocumentProps,
 		ref,

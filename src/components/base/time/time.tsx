@@ -58,9 +58,9 @@ function TimeSelector({ selected, onSelect, onCancel }: TimeSelectorProps) {
 	const minutes = Array.from({ length: 60 }, (_, i) => i);
 	const periods: Period[] = ["AM", "PM"];
 
-	const hourRef = useRef<HTMLDivElement | null>(null);
-	const minuteRef = useRef<HTMLDivElement | null>(null);
-	const periodRef = useRef<HTMLDivElement | null>(null);
+	const hourRef = useRef<HTMLDivElement>(null);
+	const minuteRef = useRef<HTMLDivElement>(null);
+	const periodRef = useRef<HTMLDivElement>(null);
 
 	// Track if scroll is programmatic to prevent feedback loop
 	const hourProgrammaticScroll = useProgrammaticScroll();
@@ -71,7 +71,7 @@ function TimeSelector({ selected, onSelect, onCancel }: TimeSelectorProps) {
 
 	// Generic handleScroll for type safety, now with programmatic scroll prevention
 	const handleScroll = <T,>(
-		ref: React.RefObject<HTMLDivElement | null>,
+		ref: React.RefObject<HTMLDivElement>,
 		items: T[],
 		setter: (val: T) => void,
 		programmaticScrollRef: React.MutableRefObject<boolean>,
@@ -103,7 +103,7 @@ function TimeSelector({ selected, onSelect, onCancel }: TimeSelectorProps) {
 
 	const debouncedScrollToItem = useDebouncedCallback(
 		(
-			ref: React.RefObject<HTMLDivElement | null>,
+			ref: React.RefObject<HTMLDivElement>,
 			index: number,
 			programmaticScrollRef?: React.MutableRefObject<boolean>,
 		) => {
@@ -126,7 +126,7 @@ function TimeSelector({ selected, onSelect, onCancel }: TimeSelectorProps) {
 
 	// Constrain createScrollPicker to string | number for ReactNode safety
 	const createScrollPicker = <T extends string | number>(
-		ref: React.RefObject<HTMLDivElement | null>,
+		ref: React.RefObject<HTMLDivElement>,
 		items: T[],
 		selected: T,
 		setter: (val: T) => void,
@@ -221,27 +221,27 @@ function TimeSelector({ selected, onSelect, onCancel }: TimeSelectorProps) {
 							"linear-gradient(to top, rgba(255,255,255,1), rgba(255,255,255,0.5))",
 					}}
 				/>
-			{createScrollPicker(
-				hourRef,
-				hours,
-				selectedHour,
-				(val) => setSelectedHour(val as number),
-				hourProgrammaticScroll,
-			)}
-			{createScrollPicker(
-				minuteRef,
-				minutes,
-				selectedMinute,
-				(val) => setSelectedMinute(val as number),
-				minuteProgrammaticScroll,
-			)}
-			{createScrollPicker(
-				periodRef,
-				periods,
-				selectedPeriod,
-				(val) => setSelectedPeriod(val as Period),
-				periodProgrammaticScroll,
-			)}
+				{createScrollPicker(
+					hourRef,
+					hours,
+					selectedHour,
+					(val) => setSelectedHour(val as number),
+					hourProgrammaticScroll,
+				)}
+				{createScrollPicker(
+					minuteRef,
+					minutes,
+					selectedMinute,
+					(val) => setSelectedMinute(val as number),
+					minuteProgrammaticScroll,
+				)}
+				{createScrollPicker(
+					periodRef,
+					periods,
+					selectedPeriod,
+					(val) => setSelectedPeriod(val as Period),
+					periodProgrammaticScroll,
+				)}
 			</div>
 
 			<div className="pt-4 gap-4 flex justify-between border-t border-gray-200">

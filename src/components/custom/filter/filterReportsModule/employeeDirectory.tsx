@@ -1,6 +1,6 @@
 import { CheckboxField, InputField, SelectInput } from "@/components/base";
 import { DEPARTMENT_TEAM_OPTIONS, LOCATION_OPTIONS } from "@/constants";
-import type { FilterEmployeeDirectoryProps } from "@/types";
+import type { FilterEmployeeDirectoryProps, FilterHandles } from "@/types";
 import {
 	type ChangeEvent,
 	forwardRef,
@@ -12,7 +12,10 @@ import {
 } from "react";
 import { MultiSelectFilter } from "../../multiSelectFilter/multiSelectFilter";
 
-export const FilterEmployeeDirectory = forwardRef(
+export const FilterEmployeeDirectory = forwardRef<
+	FilterHandles,
+	FilterEmployeeDirectoryProps
+>(
 	(
 		{
 			data,

@@ -9,6 +9,7 @@ import {
 import type {
 	AttendanceStatus,
 	FilterAttendanceManagementProps,
+	FilterHandles,
 } from "@/types";
 import {
 	forwardRef,
@@ -19,7 +20,10 @@ import {
 	useState,
 } from "react";
 
-export const FilterAttendanceManagement = forwardRef(
+export const FilterAttendanceManagement = forwardRef<
+	FilterHandles,
+	FilterAttendanceManagementProps
+>(
 	(
 		{
 			data,

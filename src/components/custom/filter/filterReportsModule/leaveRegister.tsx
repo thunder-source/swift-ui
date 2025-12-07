@@ -6,7 +6,7 @@ import {
 	LEAVE_TYPE_OPTIONS,
 	LOCATION_OPTIONS,
 } from "@/constants";
-import type { FilterLeaveRegisterProps } from "@/types";
+import type { FilterHandles, FilterLeaveRegisterProps } from "@/types";
 import {
 	forwardRef,
 	useCallback,
@@ -17,7 +17,10 @@ import {
 } from "react";
 import { MultiSelectFilter } from "../../multiSelectFilter/multiSelectFilter";
 
-export const FilterLeaveRegister = forwardRef(
+export const FilterLeaveRegister = forwardRef<
+	FilterHandles,
+	FilterLeaveRegisterProps
+>(
 	(
 		{ data, onChange, onApply, type = "onSubmit" }: FilterLeaveRegisterProps,
 		ref,

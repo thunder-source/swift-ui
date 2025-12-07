@@ -114,7 +114,6 @@ export const Default: Story = {
 	args: {
 		data: sampleUserData,
 		className: "bg-blue-50 border-2 border-blue-200 shadow-lg !w-[50%]",
-		
 	},
 };
 
@@ -136,7 +135,6 @@ export const BalancedColumns: Story = {
 			maxColumns: 2,
 			headerText: "Balanced Layout (3 items per column)",
 		},
-		
 	},
 };
 
@@ -181,7 +179,6 @@ export const SequentialFilling: Story = {
 			maxColumns: 2,
 			headerText: "Sequential Layout (fills first column first)",
 		},
-		
 	},
 };
 
@@ -203,7 +200,6 @@ export const ManyItems: Story = {
 			adaptiveLayout: true,
 			headerText: "Comprehensive Details",
 		},
-		
 	},
 };
 
@@ -217,7 +213,6 @@ export const CompactDensity: Story = {
 			density: "compact",
 			maxColumns: 2,
 		},
-		
 	},
 };
 
@@ -231,7 +226,6 @@ export const SpaciousDensity: Story = {
 			density: "spacious",
 			maxColumns: 2,
 		},
-		
 	},
 };
 
@@ -250,7 +244,6 @@ export const FixedTwoColumns: Story = {
 			maxColumns: 2,
 			headerText: "Fixed 2-Column Layout",
 		},
-		
 	},
 };
 
@@ -265,7 +258,6 @@ export const FixedSingleColumn: Story = {
 			maxColumns: 1,
 			density: "comfortable",
 		},
-		
 	},
 };
 
@@ -285,7 +277,6 @@ export const ThreeColumns: Story = {
 			maxColumns: 3,
 			density: "comfortable",
 		},
-		
 	},
 };
 
@@ -299,7 +290,6 @@ export const WithoutHeader: Story = {
 			showHeader: false,
 			maxColumns: 2,
 		},
-		
 	},
 };
 
@@ -313,7 +303,6 @@ export const CustomHeader: Story = {
 			headerText: "Company Information",
 			maxColumns: 2,
 		},
-		
 	},
 };
 
@@ -334,7 +323,6 @@ export const TruncatedValues: Story = {
 			truncateValues: true,
 			maxColumns: 2,
 		},
-		
 	},
 };
 
@@ -367,7 +355,6 @@ export const FilteredData: Story = {
 		config: {
 			maxColumns: 2,
 		},
-		
 	},
 };
 
@@ -426,7 +413,6 @@ export const CustomFormatters: Story = {
 			}
 			return String(value);
 		},
-		
 	},
 };
 
@@ -442,7 +428,6 @@ export const CustomStyling: Story = {
 			density: "comfortable",
 		},
 		className: "bg-blue-50 border-2 border-blue-200 shadow-lg",
-		
 	},
 };
 

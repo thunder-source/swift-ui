@@ -9,6 +9,7 @@ import {
 import type {
 	FilterAllEmployeesProps,
 	FilterAllEmployeesValues,
+	FilterHandles,
 } from "@/types";
 import { Search } from "lucide-react";
 import {
@@ -20,7 +21,10 @@ import {
 	useState,
 } from "react";
 
-export const FilterAllEmployees = forwardRef(
+export const FilterAllEmployees = forwardRef<
+	FilterHandles,
+	FilterAllEmployeesProps
+>(
 	(
 		{ data, onChange, onApply, type = "onSubmit" }: FilterAllEmployeesProps,
 		ref,

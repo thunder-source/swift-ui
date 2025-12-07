@@ -16,4 +16,3 @@ export * from "./teamBirthdayCard";
 export * from "./announcementCard";
 export * from "./generalDetailCard";
 export * from "./notificationList";
-

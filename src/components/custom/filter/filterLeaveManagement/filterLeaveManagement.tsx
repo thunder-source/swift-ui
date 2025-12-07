@@ -8,7 +8,7 @@ import {
 	LOCATION_OPTIONS,
 	PUNCH_SOURCE_OPTIONS,
 } from "@/constants";
-import type { FilterLeaveManagementProps } from "@/types";
+import type { FilterHandles, FilterLeaveManagementProps } from "@/types";
 import {
 	forwardRef,
 	useCallback,
@@ -18,7 +18,10 @@ import {
 	useState,
 } from "react";
 
-export const FilterLeaveManagement = forwardRef(
+export const FilterLeaveManagement = forwardRef<
+	FilterHandles,
+	FilterLeaveManagementProps
+>(
 	(
 		{ data, onChange, onApply, type = "onSubmit" }: FilterLeaveManagementProps,
 		ref,

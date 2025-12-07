@@ -212,7 +212,7 @@
 // 					ref={panelRef}
 // 					className={`
 //             absolute left-0 top-full z-40
-//             bg-white dark:bg-gray-800 
+//             bg-white dark:bg-gray-800
 //             border border-gray-200 dark:border-gray-700
 //             rounded-b-lg rounded-tr-lg shadow-xl
 //             transition-all duration-300 ease-out

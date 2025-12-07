@@ -1,6 +1,10 @@
 import { CheckboxField, SelectInput } from "@/components/base";
 import { DEFAULT_STATUS_OPTIONS, LOCATION_OPTIONS } from "@/constants";
-import type { AttendanceStatus, FilterDashboardProps } from "@/types";
+import type {
+	AttendanceStatus,
+	FilterDashboardProps,
+	FilterHandles,
+} from "@/types";
 import {
 	forwardRef,
 	useCallback,
@@ -10,11 +14,8 @@ import {
 	useState,
 } from "react";
 
-const FilterDashboard = forwardRef(
-	(
-		{ data, onChange, onApply, type = "onSubmit" }: FilterDashboardProps,
-		ref,
-	) => {
+const FilterDashboard = forwardRef<FilterHandles, FilterDashboardProps>(
+	({ data, onChange, onApply, type = "onSubmit" }, ref) => {
 		const [localValues, setLocalValues] = useState(data);
 
 		// Sync values if type is onChange OR values prop changes
