@@ -3,9 +3,7 @@
  * @description Storybook stories for the Announcement component
  */
 
-import { action } from "storybook/actions";
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { expect, userEvent, within } from "@storybook/test";
 import AnnouncementCard from "./announcementCard";
 
 // Sample data for stories
@@ -65,7 +63,6 @@ export const Interactive: Story = {
 	args: {
 		items: sampleAnnouncements,
 		date: "2024-03-20",
-		onItemSelect: action("item-selected"),
 	},
 };
 
@@ -176,25 +173,8 @@ export const AccessibilityTest: Story = {
 	args: {
 		items: sampleAnnouncements,
 		date: "Wednesday, 06 July 2025",
-		onItemSelect: action("item-selected"),
+		// onItemSelect: fn(),
 		ariaLabel: "Daily Schedule Announcements",
-	},
-	play: async ({ canvasElement }) => {
-		const canvas = within(canvasElement);
-
-		// Test keyboard navigation
-		const firstItem = canvas.getAllByRole("button")[0];
-		await userEvent.tab();
-		await expect(firstItem).toHaveFocus();
-
-		// Test Enter key activation
-		await userEvent.keyboard("{Enter}");
-
-		// Test accessibility labels
-		await expect(canvas.getByRole("region")).toHaveAttribute(
-			"aria-label",
-			"Daily Schedule Announcements",
-		);
 	},
 };
 

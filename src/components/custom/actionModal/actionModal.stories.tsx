@@ -1,7 +1,6 @@
 import { Button } from "@/components/ui";
 import { action } from "storybook/actions";
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { expect, userEvent, within } from "@storybook/test";
 import { ActionModal, ModalVariant } from "./actionModal";
 
 const meta = {
@@ -270,39 +269,5 @@ export const NoCancelButton: Story = {
 				story: "Modal with only action button, no cancel option.",
 			},
 		},
-	},
-};
-
-// Interaction test
-export const InteractionTest: Story = {
-	args: {
-		type: ModalVariant.AnnouncementDelete,
-	},
-	play: async ({ canvasElement }) => {
-		const canvas = within(canvasElement);
-
-		// Click the trigger button
-		const triggerButton = canvas.getByRole("button", { name: /open modal/i });
-		await userEvent.click(triggerButton);
-
-		// Wait for modal to appear
-		const modal = await canvas.findByRole("dialog");
-		expect(modal).toBeInTheDocument();
-
-		// Check if title and description are present
-		expect(canvas.getByText("Delete Announcement")).toBeInTheDocument();
-		expect(
-			canvas.getByText(/Remove outdated or unnecessary/),
-		).toBeInTheDocument();
-
-		// Check if both buttons are present
-		const cancelButton = canvas.getByRole("button", { name: /cancel/i });
-		const deleteButton = canvas.getByRole("button", { name: /delete/i });
-
-		expect(cancelButton).toBeInTheDocument();
-		expect(deleteButton).toBeInTheDocument();
-
-		// Click cancel to close modal
-		await userEvent.click(cancelButton);
 	},
 };

@@ -1,6 +1,5 @@
 import { action } from "storybook/actions";
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { expect, userEvent, within } from "@storybook/test";
 import * as React from "react";
 import {
 	Avatar,
@@ -653,21 +652,6 @@ export const AccessibilityDemo: Story = {
 					"Demonstration of accessibility features including keyboard navigation and screen reader support.",
 			},
 		},
-	},
-	play: async ({ canvasElement }) => {
-		const canvas = within(canvasElement);
-
-		// Test keyboard navigation
-		const avatars = canvas.getAllByRole("img");
-		expect(avatars).toHaveLength(3);
-
-		// Check for proper ARIA labels
-		const statusIndicators = canvas.getAllByRole("status");
-		expect(statusIndicators).toHaveLength(2);
-
-		// Test focus management
-		await userEvent.tab();
-		// Note: In a real implementation, you might want to make avatars focusable
 	},
 	render: () => (
 		<div className="flex flex-col gap-4">

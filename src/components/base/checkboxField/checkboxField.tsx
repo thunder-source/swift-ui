@@ -1,7 +1,7 @@
 import { Checkbox } from "@/components/ui";
 import { cn } from "@/lib/utils";
 import { type ChangeEvent, useEffect, useState } from "react";
-import { SvgIcon } from "../index";
+import { SvgIcon } from "../svgIcon";
 
 interface CheckboxFieldProps {
 	name: string;

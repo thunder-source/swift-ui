@@ -72,11 +72,14 @@ export default {
       },
     }),
     typescript({
-      tsconfig: "./tsconfig.app.json",
+      tsconfig: "./tsconfig.build.json",
       declaration: false, // Already handled by build:types
       compilerOptions: {
         noEmit: false,
-        outDir: "./dist"
+        outDir: "./dist",
+        declaration: false,
+        declarationMap: false,
+        declarationDir: null,
       }
     }),
     postcss({
@@ -102,5 +105,10 @@ export default {
       brotliSize: true,
     }),
   ],
-  external: ["react", "react-dom", "react-router-dom", "react-redux"],
+  external: (id) => {
+    // Mark React dependencies and @radix-ui/* packages as external
+    if (id.startsWith("@radix-ui/")) return true;
+    const externals = ["react", "react-dom", "react-router-dom", "react-redux"];
+    return externals.includes(id);
+  },
 };

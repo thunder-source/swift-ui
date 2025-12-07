@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui";
+import { Button } from "../button";
 import { cn } from "@/lib/utils";
 import useEmblaCarousel, {
 	type UseEmblaCarouselType,

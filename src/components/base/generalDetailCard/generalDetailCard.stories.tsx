@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { fn } from "@storybook/test";
 import GeneralDetailCard from "./generalDetailCard";
 
 const meta: Meta<typeof GeneralDetailCard> = {
@@ -115,7 +114,7 @@ export const Default: Story = {
 	args: {
 		data: sampleUserData,
 		className: "bg-blue-50 border-2 border-blue-200 shadow-lg !w-[50%]",
-		onDetailClick: fn(),
+		
 	},
 };
 
@@ -137,7 +136,7 @@ export const BalancedColumns: Story = {
 			maxColumns: 2,
 			headerText: "Balanced Layout (3 items per column)",
 		},
-		onDetailClick: fn(),
+		
 	},
 };
 
@@ -182,7 +181,7 @@ export const SequentialFilling: Story = {
 			maxColumns: 2,
 			headerText: "Sequential Layout (fills first column first)",
 		},
-		onDetailClick: fn(),
+		
 	},
 };
 
@@ -204,7 +203,7 @@ export const ManyItems: Story = {
 			adaptiveLayout: true,
 			headerText: "Comprehensive Details",
 		},
-		onDetailClick: fn(),
+		
 	},
 };
 
@@ -218,7 +217,7 @@ export const CompactDensity: Story = {
 			density: "compact",
 			maxColumns: 2,
 		},
-		onDetailClick: fn(),
+		
 	},
 };
 
@@ -232,7 +231,7 @@ export const SpaciousDensity: Story = {
 			density: "spacious",
 			maxColumns: 2,
 		},
-		onDetailClick: fn(),
+		
 	},
 };
 
@@ -251,7 +250,7 @@ export const FixedTwoColumns: Story = {
 			maxColumns: 2,
 			headerText: "Fixed 2-Column Layout",
 		},
-		onDetailClick: fn(),
+		
 	},
 };
 
@@ -266,7 +265,7 @@ export const FixedSingleColumn: Story = {
 			maxColumns: 1,
 			density: "comfortable",
 		},
-		onDetailClick: fn(),
+		
 	},
 };
 
@@ -286,7 +285,7 @@ export const ThreeColumns: Story = {
 			maxColumns: 3,
 			density: "comfortable",
 		},
-		onDetailClick: fn(),
+		
 	},
 };
 
@@ -300,7 +299,7 @@ export const WithoutHeader: Story = {
 			showHeader: false,
 			maxColumns: 2,
 		},
-		onDetailClick: fn(),
+		
 	},
 };
 
@@ -314,7 +313,7 @@ export const CustomHeader: Story = {
 			headerText: "Company Information",
 			maxColumns: 2,
 		},
-		onDetailClick: fn(),
+		
 	},
 };
 
@@ -335,7 +334,7 @@ export const TruncatedValues: Story = {
 			truncateValues: true,
 			maxColumns: 2,
 		},
-		onDetailClick: fn(),
+		
 	},
 };
 
@@ -368,7 +367,7 @@ export const FilteredData: Story = {
 		config: {
 			maxColumns: 2,
 		},
-		onDetailClick: fn(),
+		
 	},
 };
 
@@ -382,10 +381,6 @@ export const Interactive: Story = {
 			maxColumns: 2,
 			density: "comfortable",
 		},
-		onDetailClick: fn((key: string, value: string) => {
-			console.log(`Clicked on ${key}: ${value}`);
-			alert(`You clicked on ${key}: ${value}`);
-		}),
 	},
 };
 
@@ -431,7 +426,7 @@ export const CustomFormatters: Story = {
 			}
 			return String(value);
 		},
-		onDetailClick: fn(),
+		
 	},
 };
 
@@ -447,7 +442,7 @@ export const CustomStyling: Story = {
 			density: "comfortable",
 		},
 		className: "bg-blue-50 border-2 border-blue-200 shadow-lg",
-		onDetailClick: fn(),
+		
 	},
 };
 

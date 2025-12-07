@@ -1,15 +1,17 @@
+import { Calendar } from "@/components/ui/calendar";
+import { Input } from "@/components/ui/input";
 import {
-	Calendar,
-	Input,
 	Popover,
 	PopoverContent,
 	PopoverTrigger,
+} from "@/components/ui/popover";
+import {
 	Select,
 	SelectContent,
 	SelectItem,
 	SelectTrigger,
 	SelectValue,
-} from "@/components/ui";
+} from "@/components/ui/select";
 import { REGEX } from "@/constants";
 import {
 	DEFAULT_AMOUNT_UNITS,

@@ -42,7 +42,6 @@ const otpSvg = lazy(() => import("@/assets/svg/forgotPassword/otp.svg?react"));
 const resetSvg = lazy(
 	() => import("@/assets/svg/forgotPassword/reset.svg?react"),
 );
-const hiSvg = lazy(() => import("@/assets/svg/header/hi.svg?react"));
 
 // Constants for SVG size limits
 const MAX_SVG_SIZE_KB = 50; // Maximum allowed SVG size in KB
@@ -83,10 +82,8 @@ const svgSizes: Record<string, SvgSizeMetadata> = {
 
 	// Larger SVGs (potentially over 50KB)
 
-	hiSvg: { size: 60, isLarge: true },
 	otp: { size: 45, isLarge: false }, // Just under the limit
 	reset: { size: 45, isLarge: false }, // Just under the limit
-	hi: { size: 1025, isLarge: true }, // This was the problematic large SVG
 };
 
 // Regular SVG components map
@@ -132,7 +129,6 @@ const svgMap = {
 	// Lazy-loaded larger SVGs
 	otp: otpSvg,
 	reset: resetSvg,
-	hi: hiSvg,
 	//-----------------
 };
 

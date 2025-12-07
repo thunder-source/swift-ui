@@ -26,7 +26,7 @@ function Header({
 					<h1 className="text-2xl flex items-center font-bold text-[hsl(var(--text-dark))]">
 						Welcome back, {name}!{" "}
 						<span className="ml-1">
-							<SvgIcon name="hi" size={28} />
+							👋
 						</span>
 					</h1>
 					<p className="text-[hsl(var(--text-medium))] text-sm -mt-1">

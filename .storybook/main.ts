@@ -1,17 +1,18 @@
 import type { StorybookConfig } from "@storybook/react-vite";
 
 const config: StorybookConfig = {
-	stories: ["../src/**/*.mdx", "../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
+	 framework: '@storybook/react-vite',
+	stories: ["../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
 	addons: [
-        "@storybook/addon-onboarding",
-        "@storybook/addon-essentials",
         "@chromatic-com/storybook",
-        "@storybook/experimental-addon-test",
-        "@storybook/addon-docs"
-    ],
-	framework: {
-		name: "@storybook/react-vite",
-		options: {},
+		"@storybook/addon-docs",
+	],
+	typescript: {
+		reactDocgen: 'react-docgen-typescript',
+		reactDocgenTypescriptOptions: {
+			shouldExtractLiteralValuesFromEnum: true,
+			propFilter: (prop) => (prop.parent ? !/node_modules/.test(prop.parent.fileName) : true),
+		},
 	},
 	viteFinal: async (config) => {
 		// Handle circular dependencies and optimize imports
@@ -37,6 +38,7 @@ const config: StorybookConfig = {
 			...(config.optimizeDeps.exclude || []),
 			"lucide-react",
 			"@radix-ui/react-slot",
+			"semver", // Exclude semver to avoid default export issues
 		];
 
 		// Add build configuration

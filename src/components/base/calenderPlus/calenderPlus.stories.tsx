@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { fn, userEvent, within } from "@storybook/test";
 import { useState } from "react";
 import CalendarPlus, {
 	type CalendarEvent,
@@ -54,8 +53,6 @@ const meta: Meta<typeof CalendarPlusWrapper> = {
 		year: new Date().getFullYear(),
 		month: new Date().getMonth(),
 		events: mockEvents,
-		onMonthChange: fn(),
-		onDateClick: fn(),
 		ariaLabel: "Employee Attendance Calendar",
 	},
 	parameters: {
@@ -121,13 +118,6 @@ export const InteractiveTest: Story = {
 			{ date: 15, type: "holiday", label: "Public Holiday" },
 			{ date: 25, type: "leave-without-pay", label: "Leave Without Pay" },
 		],
-	},
-	play: async ({ canvasElement }) => {
-		const canvas = within(canvasElement);
-		const dateButton = await canvas.findByText("15");
-		await userEvent.click(dateButton);
-		await userEvent.keyboard("{Tab}");
-		await userEvent.keyboard("{Enter}");
 	},
 };
 

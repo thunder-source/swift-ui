@@ -1,10 +1,10 @@
-import { SvgIcon } from "@/components/base";
+import { SvgIcon } from "@/components/base/svgIcon";
 import {
 	Tooltip,
 	TooltipContent,
 	TooltipProvider,
 	TooltipTrigger,
-} from "@/components/ui";
+} from "../tooltip";
 import { cn } from "@/lib/utils";
 import { Slot } from "@radix-ui/react-slot";
 import { type VariantProps, cva } from "class-variance-authority";

@@ -1,4 +1,4 @@
-import { Button, buttonVariants } from "@/components/ui";
+import { Button, buttonVariants } from "../button";
 import { ErrorBoundary } from "@/hooks/useErrorBoundary";
 import { cn } from "@/lib/utils";
 import { ChevronLeft, ChevronRight } from "lucide-react";
